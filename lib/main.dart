@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import './pages/login.dart';
-
+import './components/history_card.dart';
 
 void main() {
   runApp(new MaterialApp(
@@ -10,11 +10,12 @@ void main() {
       //  appBar: new AppBar(title: new Header()),
         body: Login(),
       ),
-          initialRoute: '/login',
+          initialRoute: '/register',
 
       routes: {
         //'/':(context)=>MyDrawer(),
-        '/login':(context)=> Login()
+        '/login':(context)=> Login(),
+        '/register':(context)=>CardOfHistory()
       },
       )
       );
