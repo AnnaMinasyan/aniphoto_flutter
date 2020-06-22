@@ -51,6 +51,7 @@ class _LoginState extends State<Login> {
                   Flexible(
                       flex: 9,
                       child: Column(
+                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Container(
                               decoration: BoxDecoration(
@@ -217,7 +218,6 @@ class _LoginState extends State<Login> {
                           ],
                         ),
                       )
-                      //
                       ),
                 ],
               ),

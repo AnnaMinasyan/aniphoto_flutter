@@ -5,6 +5,8 @@ import './pages/login.dart';
 import './pages/registration.dart';
 import './pages/drawer_pages/main_drawer.dart';
 import './pages/drawer_pages/history.dart';
+import './pages/drawer_pages/address.dart';
+import './pages/drawer_pages/new_address.dart';
 void main() => runApp(MyApp());
 
 // ...
@@ -21,6 +23,8 @@ debugShowCheckedModeBanner: false,
         '/registr': (BuildContext context) => Registration(),
         '/drawer': (BuildContext context) => MainDrawer(),
         '/history': (BuildContext context) => History(),
+         '/address': (BuildContext context) => Addresses(), 
+          '/newaddress': (BuildContext context) => NewAddresses(),
       },
     );
   }

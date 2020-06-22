@@ -136,7 +136,7 @@ class MainDrawer extends StatelessWidget {
                 Text('Address')
               ]),
               onTap: () {
-                Navigator.pop(context);
+                Navigator.pushReplacementNamed(context,'/address'); 
               },
             ),
           ],
