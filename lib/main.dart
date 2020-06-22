@@ -1,22 +1,27 @@
+import 'package:aniphoto/pages/drawer_pages/history.dart';
+import 'package:aniphoto/pages/registration.dart';
 import 'package:flutter/material.dart';
 import './pages/login.dart';
-import './components/history_card.dart';
+import './pages/registration.dart';
+import './pages/drawer_pages/main_drawer.dart';
+import './pages/drawer_pages/history.dart';
+void main() => runApp(MyApp());
 
-void main() {
-  runApp(new MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: new Scaffold(
-        resizeToAvoidBottomInset: false,
-      //  appBar: new AppBar(title: new Header()),
-        body: Login(),
-      ),
-          initialRoute: '/register',
+// ...
 
+class MyApp extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      title: 'Flutter Code Sample for Navigator',
+debugShowCheckedModeBanner: false,    
+  initialRoute: '/',
       routes: {
-        //'/':(context)=>MyDrawer(),
-        '/login':(context)=> Login(),
-        '/register':(context)=>CardOfHistory()
+        '/': (BuildContext context) => Login(),
+        '/registr': (BuildContext context) => Registration(),
+        '/drawer': (BuildContext context) => MainDrawer(),
+        '/history': (BuildContext context) => History(),
       },
-      )
-      );
+    );
+  }
 }

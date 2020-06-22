@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // Define a custom Form widget.
 class Registration extends StatefulWidget {
@@ -34,41 +35,55 @@ class _RegistrationState extends State<Registration> {
               ),
             ),
             child: Container(
-              margin: EdgeInsets.only(top: 110.0, right: 16, left: 16),
+              margin: EdgeInsets.only(top: 40.0, right: 16, left: 16),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Container(
-                      height: 130,
-                      width: 130,
-                      decoration: BoxDecoration(
-                        image: DecorationImage(
-                          image: AssetImage("assets/registr.jpg"),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                      //child:Padding(
+                  Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
 
-                      child: Align(
-                          alignment: Alignment.bottomRight,
-                          child: Container(
-                              height: 45,
-                              width: 45,
-                              decoration: BoxDecoration(
-                                color: Colors.blue,
-                                borderRadius: BorderRadius.circular(80),
-                              ),
-                              child: FlatButton(
-                                color: Colors.red,
-                                  onPressed: null,
-                                  child: Text(
-                                    '+',
-                                    style: TextStyle(
-                                      fontSize: 30,
-                                      color: Colors.white,
-                                      
-                                    ),
-                                  ))))),
+                    children: <Widget>[
+                      IconButton(
+                          color: Colors.white,
+                          iconSize: 30,
+                          icon: FaIcon(FontAwesomeIcons.arrowLeft),
+                          onPressed: () {
+                             Navigator.of(context)
+                                      .pushReplacementNamed('/');
+                          }),
+                      Container(
+                          height: 130,
+                          width: 130,
+                          margin: EdgeInsets.only(left:65),
+                          decoration: BoxDecoration(
+                            image: DecorationImage(
+                              image: AssetImage("assets/registr.jpg"),
+                              fit: BoxFit.cover,
+                            ),
+                          ),
+                          //child:Padding(
+
+                          child: Align(
+                              alignment: Alignment.bottomRight,
+                              child: Container(
+                                  height: 45,
+                                  width: 45,
+                                  decoration: BoxDecoration(
+                                    color: Colors.blue,
+                                    borderRadius: BorderRadius.circular(80),
+                                  ),
+                                  child: FlatButton(
+                                      color: Colors.red,
+                                      onPressed: null,
+                                      child: Text(
+                                        '+',
+                                        style: TextStyle(
+                                          fontSize: 30,
+                                          color: Colors.white,
+                                        ),
+                                      ))))),
+                    ],
+                  ),
                   Column(
                     children: <Widget>[
                       Container(
@@ -80,7 +95,7 @@ class _RegistrationState extends State<Registration> {
                             ),
                             borderRadius: BorderRadius.circular(5),
                           ),
-                          margin: EdgeInsets.only(bottom: 15.0),
+                          margin: EdgeInsets.only(bottom: 10.0),
                           child: TextField(
                             decoration: InputDecoration(
                               hintText: 'Имя',
@@ -104,7 +119,7 @@ class _RegistrationState extends State<Registration> {
                             ),
                             borderRadius: BorderRadius.circular(5),
                           ),
-                          margin: EdgeInsets.only(bottom: 15.0),
+                          margin: EdgeInsets.only(bottom: 10.0),
                           child: TextField(
                             decoration: InputDecoration(
                               hintText: 'почта',
@@ -230,21 +245,23 @@ class _RegistrationState extends State<Registration> {
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
                               Flexible(
-                                flex: 2,
-                                child: Icon(
-                                  Icons.mood,
-                                  color: Colors.white,
-                                  size: 50.0,
-                                ),
-                              ),
+                                  flex: 2,
+                                  child: IconButton(
+                                      color: Colors.white,
+                                      iconSize: 30,
+                                      icon: FaIcon(FontAwesomeIcons.facebookF),
+                                      onPressed: () {
+                                        print("Pressed");
+                                      })),
                               Flexible(
-                                flex: 2,
-                                child: Icon(
-                                  Icons.mood,
-                                  color: Colors.white,
-                                  size: 50.0,
-                                ),
-                              ),
+                                  flex: 2,
+                                  child: IconButton(
+                                      color: Colors.white,
+                                      iconSize: 30,
+                                      icon: FaIcon(FontAwesomeIcons.google),
+                                      onPressed: () {
+                                        print("Pressed");
+                                      })),
                             ],
                           ),
                         ),

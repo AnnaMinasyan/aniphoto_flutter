@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 // Define a custom Form widget.
 class Login extends StatefulWidget {
@@ -135,7 +136,9 @@ class _LoginState extends State<Login> {
                                 width: 1,
                                 style: BorderStyle.solid),
                             borderRadius: BorderRadius.circular(5)),
-                        onPressed: () => {},
+                        onPressed: () => {
+                          Navigator.pushReplacementNamed(context,'/drawer')
+                        },
                         child: Text('вaйти',
                             style: TextStyle(
                               color: Colors.white,
@@ -173,30 +176,35 @@ class _LoginState extends State<Login> {
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
-                                    Flexible(
-                                      flex: 2,
-                                      child: Icon(
-                                        Icons.mood,
-                                        color: Colors.white,
-                                        size: 50.0,
-                                      ),
-                                    ),
-                                    Flexible(
-                                      flex: 2,
-                                      child: Icon(
-                                        Icons.mood,
-                                        color: Colors.white,
-                                        size: 50.0,
-                                      ),
-                                    ),
+                                     Flexible(
+                                  flex: 2,
+                                  child: IconButton(
+                                      color: Colors.white,
+                                      iconSize: 30,
+                                      icon: FaIcon(FontAwesomeIcons.facebookF),
+                                      onPressed: () {
+                                        print("Pressed");
+                                      })),
+                              Flexible(
+                                  flex: 2,
+                                  child: IconButton(
+                                      color: Colors.white,
+                                      iconSize: 30,
+                                      icon: FaIcon(FontAwesomeIcons.google),
+                                      onPressed: () {
+                                        print("Pressed");
+                                      })),
                                   ],
                                 ),
                               ),
                             ),
                             Flexible(
                               flex: 8,
-                              child: Container(
-                                margin: EdgeInsets.only(top: 40),
+                              child: FlatButton(
+                                onPressed: (){
+                                  Navigator.of(context)
+                                      .pushReplacementNamed('/registr');
+                                },
                                 child: Text(
                                   'Если нету профиля, то зарегистрируйтесь',
                                   style: TextStyle(
