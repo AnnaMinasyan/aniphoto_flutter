@@ -17,6 +17,7 @@ class NewOrderCard extends StatelessWidget {
       width: 190,
       child: FlatButton(
         onPressed: () {
+           Navigator.pushReplacementNamed(context,'/create-order');  
           print('sirfygisaiuryi');
         },
         child: Column(
@@ -55,7 +56,8 @@ class HeaderDrawer extends StatelessWidget {
       width: 190,
       child: FlatButton(
         onPressed: () {
-          print('sirfygisaiuryi');
+           
+          // print('sirfygisaiuryi');
         },
         child: Row(
           children: <Widget>[

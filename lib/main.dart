@@ -7,6 +7,7 @@ import './pages/drawer_pages/main_drawer.dart';
 import './pages/drawer_pages/history.dart';
 import './pages/drawer_pages/address.dart';
 import './pages/drawer_pages/new_address.dart';
+import './pages/order.dart';
 void main() => runApp(MyApp());
 
 // ...
@@ -25,6 +26,7 @@ debugShowCheckedModeBanner: false,
         '/history': (BuildContext context) => History(),
          '/address': (BuildContext context) => Addresses(), 
           '/newaddress': (BuildContext context) => NewAddresses(),
+          '/create-order': (BuildContext context) => Order(),
       },
     );
   }

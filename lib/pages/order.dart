@@ -2,16 +2,15 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../components/history_card.dart';
 
-class NewAddresses extends StatefulWidget {
+class Order extends StatefulWidget {
   @override
-  _NewAddressesState createState() => _NewAddressesState();
+  _OrderState createState() => _OrderState();
 }
 
 // Define a corresponding State class.
 // This class holds the data related to the Form.
-class _NewAddressesState extends State<NewAddresses> {
+class _OrderState extends State<Order> {
   // Create a text controller and use it to retrieve the current value
   // of the TextField.
   final myController = TextEditingController();
@@ -60,10 +59,10 @@ class _NewAddressesState extends State<NewAddresses> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                 children: [
-                Text('City', style: TextStyle(color:Colors.grey, fontWeight: FontWeight.bold, fontSize: 16.0),),
+                Text('Size', style: TextStyle(color:Colors.grey, fontWeight: FontWeight.bold, fontSize: 16.0),),
                 Container(
-                  width: 180.0,
-                  height: 40,
+                  width: 120.0,
+                  height: 50,
                 
                   decoration: BoxDecoration(
                     color: Color.fromARGB(120, 230, 230, 230),
@@ -77,7 +76,7 @@ class _NewAddressesState extends State<NewAddresses> {
 
                     value: dropdownValue,
                     icon: FaIcon(FontAwesomeIcons.chevronDown),
-                    iconSize: 20,
+                    iconSize: 15,
                     elevation: 20,
                     style: TextStyle(color: Colors.black,),
                     onChanged: (String newValue) {
@@ -92,7 +91,7 @@ class _NewAddressesState extends State<NewAddresses> {
                         value: value,
                         child: Container(
                           
-                          margin: EdgeInsets.only(right:75.0, left: 10),
+                          margin: EdgeInsets.only(left: 10),
                           child:Text(
                           value,
                           style: TextStyle(fontSize: 16.0, color: Colors.black),
@@ -102,48 +101,7 @@ class _NewAddressesState extends State<NewAddresses> {
                   ),
                 )
               ]),),
-              Container(
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(120, 230, 230, 230),
-                    border: Border.all(
-                      color: Color.fromARGB(255, 217, 217, 217),
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  // color: Color.fromARGB(40, 255, 255, 255),
-                  margin: EdgeInsets.only(bottom: 15.0),
-                  // color: Colors.red,
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'Address',
-                      border: InputBorder.none,
-                      hintStyle: TextStyle(
-                        color: Colors.grey,
-                      ),
-
-                      prefixText: ' ',
-                      // suffixText: 'USD',
-                      // suffixStyle: const TextStyle(color: Colors.green)),
-                    ),
-                  )),
-              Container(
-                  decoration: BoxDecoration(
-                    color: Color.fromARGB(120, 230, 230, 230),
-                    border: Border.all(
-                      color: Color.fromARGB(255, 217, 217, 217),
-                      width: 1,
-                    ),
-                    borderRadius: BorderRadius.circular(5),
-                  ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      hintText: 'User',
-                      border: InputBorder.none,
-                      hintStyle: TextStyle(color: Colors.grey),
-                      prefixText: ' ',
-                    ),
-                  )),
+              
             ])),
         floatingActionButton: ButtonTheme(
           minWidth: 380.0,
@@ -158,7 +116,7 @@ class _NewAddressesState extends State<NewAddresses> {
                 borderRadius: BorderRadius.circular(5)),
             onPressed: () =>
                 {Navigator.pushReplacementNamed(context, '/address')},
-            child: Text('Create new order',
+            child: Text('Order of 0 dram',
                 style: TextStyle(
                   color: Colors.white,
                   fontSize: 20.0,
