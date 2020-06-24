@@ -24,9 +24,9 @@ debugShowCheckedModeBanner: false,
         '/registr': (BuildContext context) => Registration(),
         '/drawer': (BuildContext context) => MainDrawer(),
         '/history': (BuildContext context) => History(),
-         '/address': (BuildContext context) => Addresses(), 
-          '/newaddress': (BuildContext context) => NewAddresses(),
-          '/create-order': (BuildContext context) => Order(),
+        '/address': (BuildContext context) => Addresses(), 
+        '/newaddress': (BuildContext context) => NewAddresses(),
+        '/create-order': (BuildContext context) => Order(),
       },
     );
   }
