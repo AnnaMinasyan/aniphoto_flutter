@@ -1,8 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../components/history_card.dart';
+import '../../widgets/history_card.dart';
 
 // Define a custom Form widget.
 class History extends StatefulWidget {

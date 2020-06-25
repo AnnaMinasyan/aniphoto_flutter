@@ -1,5 +1,6 @@
 import 'dart:ui';
 
+import 'package:aniphoto/widgets/my_input.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
@@ -86,84 +87,9 @@ class _RegistrationState extends State<Registration> {
                   ),
                   Column(
                     children: <Widget>[
-                      Container(
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(40, 255, 255, 255),
-                            border: Border.all(
-                              color: Color.fromARGB(150, 255, 255, 255),
-                              width: 1,
-                            ),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          margin: EdgeInsets.only(bottom: 10.0),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              hintText: 'Имя',
-                              border: InputBorder.none,
-                              hintStyle: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                              suffixIcon: const Icon(
-                                Icons.person,
-                                color: Colors.white,
-                              ),
-                              prefixText: ' ',
-                            ),
-                          )),
-                      Container(
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(40, 255, 255, 255),
-                            border: Border.all(
-                              color: Color.fromARGB(150, 255, 255, 255),
-                              width: 1,
-                            ),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          margin: EdgeInsets.only(bottom: 10.0),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              hintText: 'почта',
-                              border: InputBorder.none,
-                              hintStyle: TextStyle(
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.bold),
-                              suffixIcon: const Icon(
-                                Icons.email,
-                                color: Colors.white,
-                              ),
-                              prefixText: ' ',
-                              // suffixText: 'USD',
-                              // suffixStyle: const TextStyle(color: Colors.green)),
-                            ),
-                          )),
-                      Container(
-                          //  margin: EdgeInsets.only(bottom: 15.0),
-                          decoration: BoxDecoration(
-                            color: Color.fromARGB(40, 255, 255, 255),
-                            border: Border.all(
-                              color: Color.fromARGB(150, 255, 255, 255),
-                              width: 1,
-                            ),
-                            borderRadius: BorderRadius.circular(5),
-                          ),
-                          child: TextField(
-                            decoration: InputDecoration(
-                              border: InputBorder.none,
-                              hintText: 'пароль',
-                              hintStyle: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                              ),
-                              //labelText: 'Life story',
-                              suffixIcon: const Icon(
-                                Icons.visibility_off,
-                                color: Colors.white,
-                              ),
-                              prefixText: ' ',
-                              // suffixText: 'USD',
-                              // suffixStyle: const TextStyle(color: Colors.green)),
-                            ),
-                          )),
+                      MyInput(placeholder: 'Имя',),
+                      MyInput(placeholder: 'почта',),
+                     MyInput(placeholder: 'пароль',),
                     ],
                   ),
                   Row(

@@ -2,6 +2,8 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import '../models/client_model.dart';
+import 'package:http/http.dart' as http;
 
 // Define a custom Form widget.
 class Login extends StatefulWidget {
@@ -11,18 +13,26 @@ class Login extends StatefulWidget {
 
 // Define a corresponding State class.
 // This class holds the data related to the Form.
+Future<ClientModel> createClient(String mail, String password) async {
+  final String apiUrl = 'http://annaniks.com:5060/api/client/';
+  final response =
+      await http.post(apiUrl, body: {"username": mail, "password": password});
+      print("-------------------${response.statusCode}   ${mail}   ${password}");
+      if (response.statusCode==201) {
+        final String responseString = response.body;
+        return clientModelFromJson(responseString);
+      } else {
+        return null;
+      }
+      
+
+}
+
 class _LoginState extends State<Login> {
-  // Create a text controller and use it to retrieve the current value
-  // of the TextField.
-  final myController = TextEditingController();
-
+  ClientModel _client;
+  final TextEditingController mailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
   @override
-  void dispose() {
-    // Clean up the controller when the widget is disposed.
-    myController.dispose();
-    super.dispose();
-  }
-
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -51,7 +61,7 @@ class _LoginState extends State<Login> {
                   Flexible(
                       flex: 9,
                       child: Column(
-                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: <Widget>[
                           Container(
                               decoration: BoxDecoration(
@@ -66,6 +76,7 @@ class _LoginState extends State<Login> {
                               margin: EdgeInsets.only(bottom: 15.0),
                               // color: Colors.red,
                               child: TextField(
+                                controller: mailController,
                                 decoration: InputDecoration(
                                   hintText: 'почта',
                                   border: InputBorder.none,
@@ -93,14 +104,14 @@ class _LoginState extends State<Login> {
                                 borderRadius: BorderRadius.circular(5),
                               ),
                               child: TextField(
-                                
+                                controller: passwordController,
                                 decoration: InputDecoration(
                                   border: InputBorder.none,
                                   hintText: 'пароль',
                                   hintStyle: TextStyle(
-                                      color: Colors.white,
-                                      fontWeight: FontWeight.bold,
-                                      ),
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.bold,
+                                  ),
                                   //labelText: 'Life story',
                                   suffixIcon: const Icon(
                                     Icons.visibility_off,
@@ -116,10 +127,10 @@ class _LoginState extends State<Login> {
                             child: Text(
                               'забыли пароль?',
                               style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.bold,
-                                  ),
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
                           ),
                         ],
@@ -137,8 +148,14 @@ class _LoginState extends State<Login> {
                                 width: 1,
                                 style: BorderStyle.solid),
                             borderRadius: BorderRadius.circular(5)),
-                        onPressed: () => {
-                          Navigator.pushReplacementNamed(context,'/drawer')
+                        onPressed: () async {
+                          final String mail =mailController.text;
+                          final String password =passwordController.text;
+                          final ClientModel client = await createClient(mail, password);
+                          setState(() {
+                            _client =client;
+                          });
+                          Navigator.pushReplacementNamed(context, '/drawer');
                         },
                         child: Text('вaйти',
                             style: TextStyle(
@@ -148,14 +165,14 @@ class _LoginState extends State<Login> {
                       ),
                     ),
                   ),
+                _client==null ? Container():Text('----${_client.id}'),
                   Flexible(
                       flex: 9,
                       child: Container(
-                        padding: EdgeInsets.only(top:35),
+                        padding: EdgeInsets.only(top: 35),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: <Widget>[
                             Flexible(
                               flex: 7,
@@ -172,29 +189,31 @@ class _LoginState extends State<Login> {
                             Flexible(
                               flex: 10,
                               child: Container(
-                                margin: EdgeInsets.symmetric(horizontal:60.0),
+                                margin: EdgeInsets.symmetric(horizontal: 60.0),
                                 child: Row(
                                   mainAxisAlignment:
                                       MainAxisAlignment.spaceBetween,
                                   children: <Widget>[
-                                     Flexible(
-                                  flex: 2,
-                                  child: IconButton(
-                                      color: Colors.white,
-                                      iconSize: 30,
-                                      icon: FaIcon(FontAwesomeIcons.facebookF),
-                                      onPressed: () {
-                                        print("Pressed");
-                                      })),
-                              Flexible(
-                                  flex: 2,
-                                  child: IconButton(
-                                      color: Colors.white,
-                                      iconSize: 30,
-                                      icon: FaIcon(FontAwesomeIcons.google),
-                                      onPressed: () {
-                                        print("Pressed");
-                                      })),
+                                    Flexible(
+                                        flex: 2,
+                                        child: IconButton(
+                                            color: Colors.white,
+                                            iconSize: 30,
+                                            icon: FaIcon(
+                                                FontAwesomeIcons.facebookF),
+                                            onPressed: () {
+                                              print("Pressed");
+                                            })),
+                                    Flexible(
+                                        flex: 2,
+                                        child: IconButton(
+                                            color: Colors.white,
+                                            iconSize: 30,
+                                            icon:
+                                                FaIcon(FontAwesomeIcons.google),
+                                            onPressed: () {
+                                              print("Pressed");
+                                            })),
                                   ],
                                 ),
                               ),
@@ -202,7 +221,7 @@ class _LoginState extends State<Login> {
                             Flexible(
                               flex: 8,
                               child: FlatButton(
-                                onPressed: (){
+                                onPressed: () {
                                   Navigator.of(context)
                                       .pushReplacementNamed('/registr');
                                 },
@@ -217,8 +236,7 @@ class _LoginState extends State<Login> {
                             )
                           ],
                         ),
-                      )
-                      ),
+                      )),
                 ],
               ),
             )),
