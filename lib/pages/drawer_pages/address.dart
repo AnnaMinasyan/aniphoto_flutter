@@ -1,80 +1,110 @@
 import 'dart:ui';
-
+import 'dart:async';
 import 'package:flutter/material.dart';
-
-
-class AddressCard extends StatelessWidget {
+import 'package:http/http.dart' as http;
+import 'dart:convert';
+class AddressCard extends StatefulWidget {
   @override
+  _AddressCardState createState() => _AddressCardState();
+}
+
+class _AddressCardState extends State<AddressCard> {
+  final String url='http://annaniks.com:5060/api/addresses/';
+  List data;
+  @override
+  void initState(){
+    super.initState();
+    this.getJsonData();
+  }
+Future<String> getJsonData()async{
+  var response =await http.get(
+    Uri.encodeFull(url),
+    headers: {'Accept':"application/json"}
+  );
+  print(response.body);
+  var convertDataToJson=json.decode(response.body);
+  setState(() {
+    
+    data=convertDataToJson['results'];
+  });
+  return "Success";
+}
+
+   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(
-          color: Color.fromARGB(255, 217, 217, 217),
-          width: 1,
-        ),
-        borderRadius: BorderRadius.circular(5),
-      ),
-      height: 130.0,
-      margin: EdgeInsets.all(10),
-      padding: EdgeInsets.symmetric(vertical: 15),
-      child: FlatButton(
-        onPressed: () {
-          print('sirfygisaiuryi');
+    return  new ListView.builder(
+        itemCount: data==null?0:data.length,
+        itemBuilder: (BuildContext context, int index){
+          return new Container(
+            child:  new Column(
+              crossAxisAlignment: CrossAxisAlignment.stretch,
+              children: <Widget>[
+                new Card(
+                  child: new Container(
+                    child:new Text(data[index]['address']),
+                    padding: EdgeInsets.only(top:20),
+                    color: Colors.red,
+                  ),
+                )
+              ],),
+          );
         },
-        child: Column(
-          children: <Widget>[
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    'Number of order:',
-                    style: TextStyle(color: Colors.grey, fontSize: 18),
-                  ),
-                  Text(
-                    'Number ',
-                    style: TextStyle(color: Colors.black, fontSize: 18),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    'Number of order:',
-                    style: TextStyle(color: Colors.grey, fontSize: 18),
-                  ),
-                  Text(
-                    '20',
-                    style: TextStyle(color: Colors.black, fontSize: 18),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    'Number of order:',
-                    style: TextStyle(color: Colors.grey, fontSize: 18),
-                  ),
-                  Text(
-                    'Gyumri',
-                    style: TextStyle(color: Colors.black, fontSize: 18),
-                  ),
-                ],
-              ),
-            ),
-          ],
-        ),
-      ),
+      
+      // Container(
+      //   padding:EdgeInsets.symmetric(horizontal:5),
+      //   child: Column(
+      //     children: <Widget>[
+      //       Container(
+      //         margin: EdgeInsets.symmetric(vertical: 5),
+      //         child: Row(
+      //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //           children: <Widget>[
+      //             Text(
+      //               'Number of order:',
+      //               style: TextStyle(color: Colors.grey, fontSize: 18),
+      //             ),
+      //             Text(
+      //               'Number ',
+      //               style: TextStyle(color: Colors.black, fontSize: 18),
+      //             ),
+      //           ],
+      //         ),
+      //       ),
+      //       Container(
+      //         margin: EdgeInsets.symmetric(vertical: 5),
+      //         child: Row(
+      //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //           children: <Widget>[
+      //             Text(
+      //               'Number of order:',
+      //               style: TextStyle(color: Colors.grey, fontSize: 18),
+      //             ),
+      //             Text(
+      //               '20',
+      //               style: TextStyle(color: Colors.black, fontSize: 18),
+      //             ),
+      //           ],
+      //         ),
+      //       ),
+      //       Container(
+      //         margin: EdgeInsets.symmetric(vertical: 5),
+      //         child: Row(
+      //           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      //           children: <Widget>[
+      //             Text(
+      //               'Number of order:',
+      //               style: TextStyle(color: Colors.grey, fontSize: 18),
+      //             ),
+      //             Text(
+      //               'Gyumri',
+      //               style: TextStyle(color: Colors.black, fontSize: 18),
+      //             ),
+      //           ],
+      //         ),
+      //       ),
+      //     ],
+      //   ),
+      // ),
     );
   }
 }
