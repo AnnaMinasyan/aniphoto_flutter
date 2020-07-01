@@ -28,7 +28,9 @@ class _RegistrationState extends State<Registration> {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        body: Container(
+        body: SingleChildScrollView(child: 
+        Container(
+          height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("assets/registr.jpg"),
@@ -41,7 +43,7 @@ class _RegistrationState extends State<Registration> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
+                      mainAxisAlignment: MainAxisAlignment.start,
 
                     children: <Widget>[
                       IconButton(
@@ -88,16 +90,17 @@ class _RegistrationState extends State<Registration> {
                   Column(
                     children: <Widget>[
                       MyInput(placeholder: 'Имя',),
+                      SizedBox(height: 5,),
                       MyInput(placeholder: 'почта',),
+                      SizedBox(height: 5,),
                      MyInput(placeholder: 'пароль',),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      Flexible(
-                        flex: 2,
-                        child: Container(
+                       Container(
+                         margin: EdgeInsets.only(right:10),
                             decoration: BoxDecoration(
                               border: Border.all(
                                 color: Colors.white,
@@ -115,10 +118,9 @@ class _RegistrationState extends State<Registration> {
                                 }),
                             width: 20,
                             height: 20),
-                      ),
-                      Flexible(
-                        flex: 16,
-                        child: new Text(
+                            Expanded(
+                              
+                              child:Text(
                           "Я  причитал и согласен  с условиями пользовательского соглашения ",
                           style: TextStyle(
                             color: Colors.white,
@@ -126,8 +128,9 @@ class _RegistrationState extends State<Registration> {
                             fontWeight: FontWeight.bold,
                           ),
                           overflow: TextOverflow.clip,
-                        ),
-                      )
+                        ),),
+                        
+                      
                     ],
                   ),
                   ButtonTheme(
@@ -170,24 +173,20 @@ class _RegistrationState extends State<Registration> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                              Flexible(
-                                  flex: 2,
-                                  child: IconButton(
+                             IconButton(
                                       color: Colors.white,
                                       iconSize: 30,
                                       icon: FaIcon(FontAwesomeIcons.facebookF),
                                       onPressed: () {
                                         print("Pressed");
-                                      })),
-                              Flexible(
-                                  flex: 2,
-                                  child: IconButton(
+                                      }),
+                               IconButton(
                                       color: Colors.white,
                                       iconSize: 30,
                                       icon: FaIcon(FontAwesomeIcons.google),
                                       onPressed: () {
                                         print("Pressed");
-                                      })),
+                                      })
                             ],
                           ),
                         ),
@@ -197,6 +196,7 @@ class _RegistrationState extends State<Registration> {
                 ],
               ),
             )),
+        )
       ),
     );
   }

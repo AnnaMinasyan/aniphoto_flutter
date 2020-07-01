@@ -79,7 +79,14 @@ class HeaderDrawer extends StatelessWidget {
   }
 }
 
-class MainDrawer extends StatelessWidget {
+class MainDrawer extends StatefulWidget {
+  final userData;
+  const MainDrawer ({ Key key, this.userData }): super(key: key);
+  @override
+  _MainDrawerState createState() => _MainDrawerState();
+}
+
+class _MainDrawerState extends State<MainDrawer> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -122,6 +129,7 @@ class MainDrawer extends StatelessWidget {
                 Text('History')
               ]),
               onTap: () {
+                print(widget.userData);
                  Navigator.pushReplacementNamed(context,'/history');          },
             ),
             ListTile(

@@ -2,7 +2,6 @@ import 'dart:io';
 import 'dart:ui';
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'dart:convert';
 import 'package:http/http.dart' as http;
 import 'package:image_picker/image_picker.dart';
@@ -33,7 +32,10 @@ class _OrderState extends State<Order> {
   }
 
   setStatus(String message) {
-    setState(() => {status = message});
+    setState(() {
+      var set = {status = message};
+            return set;
+    });
   }
 
   startUpload() {
