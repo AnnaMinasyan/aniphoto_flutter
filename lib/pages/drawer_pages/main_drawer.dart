@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-
+import '../../services/http_service.dart';
+import './history.dart';
 class NewOrderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -17,7 +18,7 @@ class NewOrderCard extends StatelessWidget {
       width: 190,
       child: FlatButton(
         onPressed: () {
-           Navigator.pushReplacementNamed(context,'/create-order');  
+          Navigator.pushReplacementNamed(context, '/create-order');
           print('sirfygisaiuryi');
         },
         child: Column(
@@ -56,7 +57,6 @@ class HeaderDrawer extends StatelessWidget {
       width: 190,
       child: FlatButton(
         onPressed: () {
-           
           // print('sirfygisaiuryi');
         },
         child: Row(
@@ -81,7 +81,7 @@ class HeaderDrawer extends StatelessWidget {
 
 class MainDrawer extends StatefulWidget {
   final userData;
-  const MainDrawer ({ Key key, this.userData }): super(key: key);
+  const MainDrawer({Key key, this.userData}) : super(key: key);
   @override
   _MainDrawerState createState() => _MainDrawerState();
 }
@@ -129,13 +129,24 @@ class _MainDrawerState extends State<MainDrawer> {
                 Text('History')
               ]),
               onTap: () {
-                print(widget.userData);
-                 Navigator.pushReplacementNamed(context,'/history');          },
+                print("______________________${widget.userData}");
+                getOrders(widget.userData['id'])
+                    .then((value) => (
+                      
+                      //  Navigator.push(
+                      //                 context,
+                      //                 MaterialPageRoute(
+                      //                   builder: (context) => History(order:value),
+                      //                 ),
+                      //               )
+                      Navigator.pushReplacementNamed(context, '/history')
+                      ));
+
+              //  Navigator.pushReplacementNamed(context, '/history');
+              },
             ),
             ListTile(
-            
-              title: Row(
-                children: [
+              title: Row(children: [
                 IconButton(
                     color: Colors.black,
                     iconSize: 20,
@@ -146,7 +157,7 @@ class _MainDrawerState extends State<MainDrawer> {
                 Text('Address')
               ]),
               onTap: () {
-                Navigator.pushReplacementNamed(context,'/address'); 
+                Navigator.pushReplacementNamed(context, '/address');
               },
             ),
           ],
@@ -154,4 +165,7 @@ class _MainDrawerState extends State<MainDrawer> {
       ),
     );
   }
+}
+
+class History {
 }

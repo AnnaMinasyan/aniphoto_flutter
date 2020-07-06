@@ -5,6 +5,8 @@ import '../../widgets/history_card.dart';
 
 // Define a custom Form widget.
 class History extends StatefulWidget {
+   final order;
+  const History({Key key, this.order}) : super(key: key);
   @override
   _HistoryState createState() => _HistoryState();
 }
@@ -14,14 +16,6 @@ class History extends StatefulWidget {
 class _HistoryState extends State<History> {
   // Create a text controller and use it to retrieve the current value
   // of the TextField.
-  final myController = TextEditingController();
-
-  @override
-  void dispose() {
-    // Clean up the controller when the widget is disposed.
-    myController.dispose();
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {

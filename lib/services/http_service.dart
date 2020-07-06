@@ -4,7 +4,7 @@ import '../models/login.dart';
 import 'package:aniphoto/models/posts_model.dart';
 import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
-//import 'package:shared_preferences/shared_preferences.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HttpService {
   final String postsURL = "https://jsonplaceholder.typicode.com/posts";
@@ -57,35 +57,37 @@ Future<dynamic> getMe(String token) async {
     if (response.statusCode == 200) {
      final responseJson = json.decode(response.body);
           print(responseJson['data']);
-          return SingIn.fromJson(responseJson['data']);
-  //  return responseJson['data'];
+          //return SingIn.fromJson(responseJson['data']);
+   return responseJson['data'];
   
     } else {
       throw Exception('Failed to create album.');
     }
   }
   // ignore: missing_return
-Future<dynamic> getOrders(String id) async {
+Future<List> getOrders(int id) async {
+  print(id);
     final http.Response response = await http.get(
     'http://annaniks.com:5060/api/order/?client=$id',
   );
     if (response.statusCode == 200) {
      final responseJson = json.decode(response.body);
-          print(responseJson);
+     return responseJson['results'];
+          
     } else {
       throw Exception('Failed to create album.');
     }
   }
 //ignore: missing_return
-// Future<bool> saveTokenPreference(String key,String value) async {
-//   print("99999999999999999999");
-//   SharedPreferences prefs = await SharedPreferences.getInstance();
-//   prefs.setString(key, value);
+Future<bool> saveTokenPreference(String key,String value) async {
+  print("99999999999999999999");
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  prefs.setString(key, value);
 
-// }
-// Future<String> getTokenPreference() async {
-//   SharedPreferences prefs = await SharedPreferences.getInstance();
-//    String token =prefs.getString('access');
-//    print("--------${token}");
-//   return token;
-// }
+}
+Future<String> getTokenPreference() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+   String token =prefs.getString('access');
+   print("--------${token}");
+  return token;
+}

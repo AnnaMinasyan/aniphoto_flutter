@@ -279,13 +279,13 @@ class _LoginState extends State<Login> {
                             .then((res) =>
                            
                                 (getMe(res).then((value) => (
-                                   print(data)
-                                  // Navigator.push(
-                                  //     context,
-                                  //     MaterialPageRoute(
-                                  //       builder: (context) => MainDrawer(userData:data),
-                                  //     ),
-                                  //   )
+                                   //print(value['id'])
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => MainDrawer(userData:value),
+                                      ),
+                                    )
                                     ))
                                 ));
                       },
