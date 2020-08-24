@@ -10,8 +10,6 @@ import './pages/drawer_pages/new_address.dart';
 import './pages/order.dart';
 void main() => runApp(MyApp());
 
-// ...
-
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -23,7 +21,7 @@ debugShowCheckedModeBanner: false,
         '/': (BuildContext context) => Login(),
         '/registr': (BuildContext context) => Registration(),
         '/drawer': (BuildContext context) => MainDrawer(),
-      
+        '/history' : (BuildContext context) => History(),
         '/address': (BuildContext context) => Addresses(), 
         '/newaddress': (BuildContext context) => NewAddresses(),
         '/create-order': (BuildContext context) => Order(),

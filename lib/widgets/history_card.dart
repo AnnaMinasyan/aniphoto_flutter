@@ -2,6 +2,8 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 
 class HistoryCard extends StatelessWidget {
+  final value;
+  HistoryCard({this.value});
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -37,28 +39,12 @@ class HistoryCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    'New',
-                    style: TextStyle(color: Colors.grey, fontSize: 18),
+                    'Новый',
+                    style: TextStyle(color: Colors.black, fontSize: 16),
                   ),
                   Text(
-                    '4000 dram ',
-                    style: TextStyle(color: Colors.black, fontSize: 30),
-                  ),
-                ],
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.symmetric(vertical: 5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Text(
-                    'Number of order',
-                    style: TextStyle(color: Colors.grey, fontSize: 18),
-                  ),
-                  Text(
-                    'Number ',
-                    style: TextStyle(color: Colors.black, fontSize: 18),
+                    value['amount'].toString(),
+                    style: TextStyle(color: Colors.black, fontSize: 25),
                   ),
                 ],
               ),
@@ -69,12 +55,12 @@ class HistoryCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    'Number of order',
-                    style: TextStyle(color: Colors.grey, fontSize: 18),
+                    'Номер заказа:',
+                    style: TextStyle(color: Colors.grey, fontSize: 16),
                   ),
                   Text(
-                    '20',
-                    style: TextStyle(color: Colors.black, fontSize: 18),
+                    value['id'].toString(),
+                    style: TextStyle(color: Colors.black, fontSize: 15),
                   ),
                 ],
               ),
@@ -85,12 +71,28 @@ class HistoryCard extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Text(
-                    'Number of order',
-                    style: TextStyle(color: Colors.grey, fontSize: 18),
+                    'Адрес:',
+                    style: TextStyle(color: Colors.grey, fontSize: 16),
+                  ),
+                  Text(
+                    value['order_address']['address'],
+                    style: TextStyle(color: Colors.black, fontSize: 15),
+                  ),
+                ],
+              ),
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(vertical: 5),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  Text(
+                    'Количество:',
+                    style: TextStyle(color: Colors.grey, fontSize: 16),
                   ),
                   Text(
                     '',
-                    style: TextStyle(color: Colors.black, fontSize: 18),
+                    style: TextStyle(color: Colors.black, fontSize: 15),
                   ),
                 ],
               ),
@@ -103,16 +105,16 @@ class HistoryCard extends StatelessWidget {
                   Container(
                     margin: EdgeInsets.only(right: 30),
                     child: Text(
-                      'Number of order',
-                      style: TextStyle(color: Colors.grey, fontSize: 18),
+                      'Комментарии:',
+                      style: TextStyle(color: Colors.grey, fontSize: 16),
                     ),
                   ),
                   Flexible(
                     flex: 2,
                     child: Text(
-                      'Number of orderNumber of orderNumber of orderNumber of order',
+                      value['comment'],
                       textAlign: TextAlign.right,
-                      style: TextStyle(color: Colors.black, fontSize: 18),
+                      style: TextStyle(color: Colors.black, fontSize: 15),
                       overflow: TextOverflow.clip,
                     ),
                   )
@@ -125,4 +127,3 @@ class HistoryCard extends StatelessWidget {
     );
   }
 }
-

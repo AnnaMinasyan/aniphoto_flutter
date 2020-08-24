@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import '../../services/http_service.dart';
-import './history.dart';
 class NewOrderCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -19,17 +17,15 @@ class NewOrderCard extends StatelessWidget {
       child: FlatButton(
         onPressed: () {
           Navigator.pushReplacementNamed(context, '/create-order');
-          print('sirfygisaiuryi');
         },
         child: Column(
           children: <Widget>[
             Container(
               margin: EdgeInsets.only(bottom: 20),
-              child: Image.asset(('assets/cardimage.png'),
-                  height: 130, fit: BoxFit.fill),
+              child: Image.asset(('assets/cardimage.png')),
             ),
             Text(
-              'New order',
+              'Новый заказ',
               style: TextStyle(
                 fontSize: 16,
               ),
@@ -45,19 +41,11 @@ class HeaderDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      // decoration: BoxDecoration(
-      //   color: Colors.white,
-      //   border: Border.all(
-      //     color: Color.fromARGB(255, 217, 217, 217),
-      //     width: 1,
-      //   ),
-      //   borderRadius: BorderRadius.circular(5),
-      // ),
+
       height: 190,
       width: 190,
       child: FlatButton(
         onPressed: () {
-          // print('sirfygisaiuryi');
         },
         child: Row(
           children: <Widget>[
@@ -67,7 +55,7 @@ class HeaderDrawer extends StatelessWidget {
                   height: 80, fit: BoxFit.fill),
             ),
             Text(
-              'New order',
+              'Online photo',
               style: TextStyle(
                 fontSize: 16,
               ),
@@ -99,7 +87,7 @@ class _MainDrawerState extends State<MainDrawer> {
           title: Align(
               alignment: Alignment.center,
               child: Text(
-                'Online Photo',
+                'Онлайне фотосервис',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 20,
@@ -126,23 +114,10 @@ class _MainDrawerState extends State<MainDrawer> {
                     onPressed: () {
                       print("Pressed");
                     }),
-                Text('History')
+                Text('История')
               ]),
               onTap: () {
-                print("______________________${widget.userData}");
-                getOrders(widget.userData['id'])
-                    .then((value) => (
-                      
-                      //  Navigator.push(
-                      //                 context,
-                      //                 MaterialPageRoute(
-                      //                   builder: (context) => History(order:value),
-                      //                 ),
-                      //               )
-                      Navigator.pushReplacementNamed(context, '/history')
-                      ));
-
-              //  Navigator.pushReplacementNamed(context, '/history');
+                      Navigator.pushReplacementNamed(context, '/history');
               },
             ),
             ListTile(
@@ -154,7 +129,7 @@ class _MainDrawerState extends State<MainDrawer> {
                     onPressed: () {
                       print("Pressed");
                     }),
-                Text('Address')
+                Text('Адреса доставки')
               ]),
               onTap: () {
                 Navigator.pushReplacementNamed(context, '/address');
@@ -167,5 +142,3 @@ class _MainDrawerState extends State<MainDrawer> {
   }
 }
 
-class History {
-}

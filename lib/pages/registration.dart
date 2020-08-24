@@ -1,25 +1,18 @@
 import 'dart:ui';
-
 import 'package:aniphoto/widgets/my_input.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-// Define a custom Form widget.
 class Registration extends StatefulWidget {
   @override
   _RegistrationState createState() => _RegistrationState();
 }
 
-// Define a corresponding State class.
-// This class holds the data related to the Form.
 class _RegistrationState extends State<Registration> {
-  // Create a text controller and use it to retrieve the current value
-  // of the TextField.
   final myController = TextEditingController();
   bool _checked = false;
   @override
   void dispose() {
-    // Clean up the controller when the widget is disposed.
     myController.dispose();
     super.dispose();
   }
@@ -28,9 +21,9 @@ class _RegistrationState extends State<Registration> {
   Widget build(BuildContext context) {
     return Container(
       child: Scaffold(
-        body: SingleChildScrollView(child: 
-        Container(
-          height: MediaQuery.of(context).size.height,
+          body: SingleChildScrollView(
+        child: Container(
+            height: MediaQuery.of(context).size.height,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: AssetImage("assets/registr.jpg"),
@@ -42,95 +35,73 @@ class _RegistrationState extends State<Registration> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
-                  Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-
-                    children: <Widget>[
-                      IconButton(
-                          color: Colors.white,
-                          iconSize: 30,
-                          icon: FaIcon(FontAwesomeIcons.arrowLeft),
-                          onPressed: () {
-                             Navigator.of(context)
-                                      .pushReplacementNamed('/');
-                          }),
-                      Container(
-                          height: 130,
-                          width: 130,
-                          margin: EdgeInsets.only(left:65),
-                          decoration: BoxDecoration(
-                            image: DecorationImage(
-                              image: AssetImage("assets/registr.jpg"),
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                          //child:Padding(
-
-                          child: Align(
-                              alignment: Alignment.bottomRight,
-                              child: Container(
-                                  height: 45,
-                                  width: 45,
-                                  decoration: BoxDecoration(
-                                    color: Colors.blue,
-                                    borderRadius: BorderRadius.circular(80),
-                                  ),
-                                  child: FlatButton(
-                                      color: Colors.red,
-                                      onPressed: null,
-                                      child: Text(
-                                        '+',
-                                        style: TextStyle(
-                                          fontSize: 30,
-                                          color: Colors.white,
-                                        ),
-                                      ))))),
-                    ],
-                  ),
+                  Container(
+                      height: 130,
+                      width: 130,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage("assets/user.jpg"),
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      child: Align(
+                          alignment: Alignment.bottomRight,
+                          child: Container(
+                              height: 45,
+                              width: 45,
+                              decoration: BoxDecoration(
+                                color: Colors.blue,
+                                borderRadius: BorderRadius.circular(80),
+                              ),
+                              child: FlatButton(
+                                  color: Colors.red,
+                                  onPressed: null,
+                                  child: Text(
+                                    '+',
+                                    style: TextStyle(
+                                      fontSize: 22,
+                                      color: Colors.white,
+                                    ),
+                                  ))))),
                   Column(
                     children: <Widget>[
-                      MyInput(placeholder: 'Имя',),
-                      SizedBox(height: 5,),
-                      MyInput(placeholder: 'почта',),
-                      SizedBox(height: 5,),
-                     MyInput(placeholder: 'пароль',),
+                      MyInput(
+                        placeholder: 'Имя',
+                        icontype: Icons.person,
+                      ),
+                      MyInput(
+                        placeholder: 'почта',
+                        icontype: Icons.mail,
+                      ),
+                      MyInput(
+                          placeholder: 'пароль',
+                          icontype: Icons.visibility_off),
                     ],
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                       Container(
-                         margin: EdgeInsets.only(right:10),
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: Colors.white,
-                                width: 1.0,
-                              ),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(5.0)),
-                            ),
-                            child: Checkbox(
-                                value: _checked,
-                                onChanged: (bool value) {
-                                  setState(() {
-                                    _checked = value;
-                                  });
-                                }),
-                            width: 20,
-                            height: 20),
-                            Expanded(
-                              
-                              child:Text(
+                      Container(
+                        margin: EdgeInsets.only(right: 20),
+                          child: Checkbox(
+                              value: _checked,
+                              onChanged: (bool value) {
+                                setState(() {
+                                  _checked = value;
+                                });
+                              }),
+                          width: 20,
+                          height: 20),
+                      Expanded(
+                        child: Text(
                           "Я  причитал и согласен  с условиями пользовательского соглашения ",
                           style: TextStyle(
                             color: Colors.white,
-                            fontSize: 16.0,
+                            fontSize: 15.0,
                             fontWeight: FontWeight.bold,
                           ),
                           overflow: TextOverflow.clip,
-                        ),),
-                        
-                      
+                        ),
+                      ),
                     ],
                   ),
                   ButtonTheme(
@@ -173,20 +144,20 @@ class _RegistrationState extends State<Registration> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: <Widget>[
-                             IconButton(
-                                      color: Colors.white,
-                                      iconSize: 30,
-                                      icon: FaIcon(FontAwesomeIcons.facebookF),
-                                      onPressed: () {
-                                        print("Pressed");
-                                      }),
-                               IconButton(
-                                      color: Colors.white,
-                                      iconSize: 30,
-                                      icon: FaIcon(FontAwesomeIcons.google),
-                                      onPressed: () {
-                                        print("Pressed");
-                                      })
+                              IconButton(
+                                  color: Colors.white,
+                                  iconSize: 30,
+                                  icon: FaIcon(FontAwesomeIcons.facebookF),
+                                  onPressed: () {
+                                    print("Pressed");
+                                  }),
+                              IconButton(
+                                  color: Colors.white,
+                                  iconSize: 30,
+                                  icon: FaIcon(FontAwesomeIcons.google),
+                                  onPressed: () {
+                                    print("Pressed");
+                                  })
                             ],
                           ),
                         ),
@@ -196,8 +167,7 @@ class _RegistrationState extends State<Registration> {
                 ],
               ),
             )),
-        )
-      ),
+      )),
     );
   }
 }
